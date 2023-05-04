@@ -8,11 +8,7 @@ from src.base import pred_type, get_items
 
 
 def load_or_create_wb(name: str) -> openpyxl.Workbook:
-    if exists(name):
-        wb = openpyxl.load_workbook(name)
-    else:
-        wb = openpyxl.Workbook()
-    return wb
+    return openpyxl.load_workbook(name) if exists(name) else openpyxl.Workbook()
 
 
 def get_or_create_sheet(wb: openpyxl.Workbook, model_dict: Dict[str, Any]) -> Worksheet:
